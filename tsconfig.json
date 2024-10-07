@@ -1,0 +1,10 @@
+{
+    "extends": "expo/tsconfig.base",
+    "compilerOptions": {
+        "strict": true,
+        "paths": {
+            "@market-pulse-app/*": ["./src/*"],
+            "@market-pulse-app/assets/*": ["./assets/*"]
+        }
+    }
+}
