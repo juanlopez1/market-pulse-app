@@ -1,46 +1,34 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useEffect } from 'react';
+import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
 import { TamaguiProvider, createTamagui } from '@tamagui/core';
 import { config } from '@tamagui/config/v3';
-import { Button } from 'tamagui';
-import { useFonts } from 'expo-font';
-import { useEffect } from 'react';
+
+import RootNavigator from '@market-pulse-app/navigators/Root.navigator';
 
 const tamaguiConfig = createTamagui(config);
 
-export default function App() {
-    const [loaded, error] = useFonts({
+const App = () => {
+    const [loaded] = useFonts({
         Inter: require('@tamagui/font-inter/otf/Inter-Medium.otf'),
         InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
     });
 
     useEffect(() => {
-        if (loaded || error) {
+        if (loaded) {
             SplashScreen.hideAsync();
         }
-    }, [loaded, error]);
+    }, [loaded]);
 
-    if (!loaded && !error) {
+    if (!loaded) {
         return null;
     }
 
     return (
         <TamaguiProvider config={tamaguiConfig}>
-            <View style={styles.container}>
-                <Text>App.tsx</Text>
-                <StatusBar style="auto" />
-                <Button theme="blue">Hello world</Button>
-            </View>
+            <RootNavigator />
         </TamaguiProvider>
     );
-}
+};
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+export default App;
