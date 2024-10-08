@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
 import { TamaguiProvider, createTamagui } from '@tamagui/core';
 import { config } from '@tamagui/config/v3';
 
@@ -26,6 +27,7 @@ const App = () => {
 
     return (
         <TamaguiProvider config={tamaguiConfig}>
+            <StatusBar style="dark" backgroundColor="#282828" />
             <RootNavigator />
         </TamaguiProvider>
     );
