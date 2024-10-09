@@ -1,4 +1,7 @@
-import type { GetByIntervalAndSymbolRequest, GetByIntervalAndSymbolResponse } from './timeSeries.types';
+import type {
+    GetByIntervalAndSymbolRequest,
+    GetByIntervalAndSymbolResponse,
+} from '@market-pulse-app/api/timeSeries.types';
 
 // TODO: remove this
 const foo: GetByIntervalAndSymbolResponse = {

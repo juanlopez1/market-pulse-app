@@ -1,7 +1,7 @@
 import { Text, YStack } from 'tamagui';
 
+import StockDetailRow from '@market-pulse-app/components/StockDetail/StockDetailRow';
 import useStocks from '@market-pulse-app/contexts/stocks.context';
-import StockDetailRow from './StockDetailRow';
 
 const StockDetail = () => {
     const { selectedStock } = useStocks();
