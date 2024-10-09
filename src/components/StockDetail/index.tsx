@@ -8,7 +8,7 @@ const StockDetail = () => {
     return (
         <YStack>
             <Text fontWeight="bold" color="#d9d9d9" fontSize={24} marginBottom={15} textAlign="center">
-                Símbolo - {selectedStock?.symbol}
+                Símbolo {selectedStock?.symbol}
             </Text>
             <YStack gap={4}>
                 <StockDetailRow label="Nombre" value={selectedStock?.name} />

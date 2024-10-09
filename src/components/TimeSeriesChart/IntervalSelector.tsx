@@ -9,7 +9,7 @@ const ToggleGroupItem = styled(ToggleGroup.Item, {
     variants: {
         selected: {
             true: {
-                backgroundColor: '#df9a3f',
+                backgroundColor: '#282828',
             },
         },
     },
@@ -47,7 +47,7 @@ const IntervalSelector = () => {
                     const selected = selectedInterval === i.value;
                     return (
                         <ToggleGroupItem key={i.value} value={i.value} selected={selected}>
-                            <Text color={selected ? '#141414' : '#747474'}>{i.label}</Text>
+                            <Text color={selected ? '#df9a3f' : '#747474'}>{i.label}</Text>
                         </ToggleGroupItem>
                     );
                 })}

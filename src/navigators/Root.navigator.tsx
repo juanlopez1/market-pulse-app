@@ -25,7 +25,7 @@ const RootNavigator = () => {
                 <Screen
                     name="StocksTable"
                     component={StocksTableScreen}
-                    options={{ title: 'Lista de acciones', ...headerStyle } as NativeStackNavigationOptions}
+                    options={{ title: 'Market Pulse', ...headerStyle } as NativeStackNavigationOptions}
                 />
                 <Screen
                     name="StockDetail"
