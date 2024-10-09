@@ -28,7 +28,7 @@ const TableItem: FC<TableItemProps> = ({ stock }) => {
                     {stock.symbol}
                 </Text>
             </TouchableOpacity>
-            <Text flex={6} color="#df9a3f">
+            <Text flex={6} color="#df9a3f" numberOfLines={3} ellipsizeMode="tail">
                 {stock.name}
             </Text>
             <Text flex={2.5} textAlign="center" color="#df9a3f">
