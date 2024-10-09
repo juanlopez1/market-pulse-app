@@ -2,6 +2,7 @@ import { useMemo } from 'react';
 import { Dimensions } from 'react-native';
 import { YStack } from 'tamagui';
 import { LineChart } from 'react-native-chart-kit';
+import type { LineChartData } from 'react-native-chart-kit/dist/line-chart/LineChart';
 
 import ErrorMessage from '@market-pulse-app/components/ErrorMessage';
 import Loader from '@market-pulse-app/components/Loader';
@@ -13,11 +14,10 @@ const screenWidth = Dimensions.get('window').width;
 
 const TimeSeriesChart = () => {
     const { error, fetching, timeSeries, getStockTimeSeries } = useTimeSeries();
-    const chartData = useMemo(() => {
-        if (timeSeries) {
-            return formatLineChartData(timeSeries);
-        }
-    }, [timeSeries]);
+    const chartData: LineChartData = useMemo(
+        () => (timeSeries ? formatLineChartData(timeSeries) : { labels: [], datasets: [{ data: [0] }] }), // Data básica para instanciar el componente LineChart
+        [timeSeries],
+    );
 
     return (
         <YStack flex={1}>
@@ -27,19 +27,17 @@ const TimeSeriesChart = () => {
             ) : fetching ? (
                 <Loader />
             ) : (
-                chartData && (
-                    <LineChart
-                        data={chartData}
-                        width={screenWidth - 15 * 2}
-                        height={500}
-                        chartConfig={{
-                            backgroundGradientFromOpacity: 0,
-                            backgroundGradientToOpacity: 0,
-                            color: () => '#767676',
-                            strokeWidth: 2,
-                        }}
-                    />
-                )
+                <LineChart
+                    data={chartData}
+                    width={screenWidth - 15 * 2}
+                    height={500}
+                    chartConfig={{
+                        backgroundGradientFromOpacity: 0,
+                        backgroundGradientToOpacity: 0,
+                        color: () => '#767676',
+                        strokeWidth: 2,
+                    }}
+                />
             )}
         </YStack>
     );

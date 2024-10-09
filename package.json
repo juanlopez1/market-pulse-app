@@ -16,6 +16,7 @@
         "@tamagui/babel-plugin": "^1.112.22",
         "@tamagui/config": "^1.112.22",
         "@tamagui/core": "^1.112.22",
+        "@tamagui/lucide-icons": "^1.114.1",
         "expo": "~51.0.37",
         "expo-font": "~12.0.10",
         "expo-splash-screen": "~0.27.6",
