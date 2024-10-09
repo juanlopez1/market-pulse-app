@@ -4,6 +4,7 @@ import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { XStack, Text } from 'tamagui';
 
+import useStocks from '@market-pulse-app/contexts/stocks.context';
 import type { Stock } from '@market-pulse-app/types/stock.types';
 import type { RootStackParamList } from '@market-pulse-app/navigators/root.types';
 
@@ -13,9 +14,11 @@ type TableItemProps = {
 
 const TableItem: FC<TableItemProps> = ({ stock }) => {
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    const { selectStock } = useStocks();
 
     const handlePressSymbol = () => {
-        navigation.navigate('StockDetail', { symbol: stock.symbol });
+        selectStock(stock);
+        navigation.navigate('StockDetail');
     };
 
     return (

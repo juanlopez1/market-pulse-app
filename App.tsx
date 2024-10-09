@@ -6,6 +6,7 @@ import { TamaguiProvider, createTamagui } from '@tamagui/core';
 import { config } from '@tamagui/config/v3';
 
 import RootNavigator from '@market-pulse-app/navigators/Root.navigator';
+import { StocksProvider } from '@market-pulse-app/contexts/stocks.context';
 
 const tamaguiConfig = createTamagui(config);
 
@@ -27,8 +28,10 @@ const App = () => {
 
     return (
         <TamaguiProvider config={tamaguiConfig}>
-            <StatusBar style="dark" backgroundColor="#282828" />
-            <RootNavigator />
+            <StocksProvider>
+                <StatusBar style="dark" backgroundColor="#282828" />
+                <RootNavigator />
+            </StocksProvider>
         </TamaguiProvider>
     );
 };
