@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
-import { Spinner, YStack } from 'tamagui';
 import { FlashList } from '@shopify/flash-list';
 
+import Loader from '@market-pulse-app/components/Loader';
 import Separator from '@market-pulse-app/components/StocksTable/Separator';
 import TableHeader from '@market-pulse-app/components/StocksTable/TableHeader';
 import TableItem from '@market-pulse-app/components/StocksTable/TableItem';
@@ -13,9 +13,7 @@ const StocksTable = () => {
         <Fragment>
             <TableHeader />
             {fetching ? (
-                <YStack justifyContent="center" height="100%">
-                    <Spinner size="large" />
-                </YStack>
+                <Loader />
             ) : (
                 <FlashList
                     data={stocks}

@@ -7,7 +7,7 @@ type ErrorMessageProps = {
 };
 
 const ErrorMessage: FC<ErrorMessageProps> = ({ message, onRetry }) => (
-    <YStack flex={1} justifyContent="center" width="75%" alignSelf="center">
+    <YStack flex={1} justifyContent="center" alignItems="center">
         <Text color="#df9a3f" fontSize={16} textAlign="center" marginBottom={20}>
             {message}
         </Text>

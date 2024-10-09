@@ -7,7 +7,7 @@ const StockDetail = () => {
     const { selectedStock } = useStocks();
     return (
         <YStack>
-            <Text fontWeight="bold" color="#d9d9d9" fontSize={20} marginBottom={15} textAlign="center">
+            <Text fontWeight="bold" color="#d9d9d9" fontSize={24} marginBottom={15} textAlign="center">
                 Símbolo - {selectedStock?.symbol}
             </Text>
             <YStack gap={4}>
