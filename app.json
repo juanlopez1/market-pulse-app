@@ -18,11 +18,17 @@
             "adaptiveIcon": {
                 "foregroundImage": "./assets/adaptive-icon.png",
                 "backgroundColor": "#282828"
-            }
+            },
+            "package": "com.juanlopez.marketpulseapp"
         },
         "web": {
             "favicon": "./assets/favicon.png"
         },
-        "plugins": ["expo-font"]
+        "plugins": ["expo-font"],
+        "extra": {
+            "eas": {
+                "projectId": "f92be7bd-d423-45b9-afb3-892c466f9f2c"
+            }
+        }
     }
 }

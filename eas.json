@@ -1,0 +1,36 @@
+{
+    "cli": {
+        "version": ">= 12.5.1",
+        "appVersionSource": "remote"
+    },
+    "build": {
+        "development": {
+            "developmentClient": true,
+            "distribution": "internal",
+            "env": {
+                "EXPO_PUBLIC_TWELVE_DATA_API_URL": "https://api.twelvedata.com/",
+                "EXPO_PUBLIC_TWELVE_DATA_API_KEY": "ba37f27a2e6e428f8f514adc2b65c7bd"
+            }
+        },
+        "preview": {
+            "distribution": "internal",
+            "env": {
+                "EXPO_PUBLIC_TWELVE_DATA_API_URL": "https://api.twelvedata.com/",
+                "EXPO_PUBLIC_TWELVE_DATA_API_KEY": "ba37f27a2e6e428f8f514adc2b65c7bd"
+            }
+        },
+        "production": {
+            "autoIncrement": true,
+            "android": {
+                "buildType": "apk"
+            },
+            "env": {
+                "EXPO_PUBLIC_TWELVE_DATA_API_URL": "https://api.twelvedata.com/",
+                "EXPO_PUBLIC_TWELVE_DATA_API_KEY": "ba37f27a2e6e428f8f514adc2b65c7bd"
+            }
+        }
+    },
+    "submit": {
+        "production": {}
+    }
+}
