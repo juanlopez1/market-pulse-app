@@ -25,8 +25,8 @@ export const StocksProvider: FC<PropsWithChildren> = ({ children }) => {
             setError(false);
             setFetching(true);
 
-            const response = await stocksAPI.getAll();
-            setStocks(response.data.splice(0, 10));
+            const availableStocks = await stocksAPI.getAllAvailableStocks();
+            setStocks(availableStocks);
         } catch (_) {
             setError(true);
         } finally {

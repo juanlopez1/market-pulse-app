@@ -1,8 +1,12 @@
-import type { GetAllStocksResponse } from '@market-pulse-app/api/stocks.types';
+import type { GetAllAvailableStocksResponse } from '@market-pulse-app/api/stocks.types';
+import type { Stock } from '@market-pulse-app/types/stock.types';
 import { httpGet } from '@market-pulse-app/services/http.service';
 
 class StocksAPI {
-    getAll = (): Promise<GetAllStocksResponse> => httpGet<GetAllStocksResponse>('stocks');
+    getAllAvailableStocks = async (): Promise<Stock[]> => {
+        const response = await httpGet<GetAllAvailableStocksResponse>('stocks?show_plan=true');
+        return response.data.filter((stock) => stock.access?.plan === 'Basic');
+    };
 }
 
 const stocksAPI = new StocksAPI();

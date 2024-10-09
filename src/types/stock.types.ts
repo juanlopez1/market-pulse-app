@@ -7,4 +7,8 @@ export type Stock = {
     country: string;
     type: string;
     figi_code: string;
+    access?: {
+        global: string;
+        plan: string;
+    };
 };
