@@ -1,15 +1,14 @@
-import { Text, YStack } from 'tamagui';
+import { YStack } from 'tamagui';
 
 import StockDetailRow from '@market-pulse-app/components/StockDetail/StockDetailRow';
 import useStocks from '@market-pulse-app/contexts/stocks.context';
+import { Title } from '@market-pulse-app/components/StockDetail/StockDetail.style';
 
 const StockDetail = () => {
     const { selectedStock } = useStocks();
     return (
         <YStack>
-            <Text fontWeight="bold" color="#d9d9d9" fontSize={24} marginBottom={15} textAlign="center">
-                Símbolo {selectedStock?.symbol}
-            </Text>
+            <Title>Símbolo {selectedStock?.symbol}</Title>
             <YStack gap={4}>
                 <StockDetailRow label="Nombre" value={selectedStock?.name} />
                 <StockDetailRow label="Moneda" value={selectedStock?.currency} />

@@ -4,11 +4,12 @@ import { YStack } from 'tamagui';
 import { LineChart } from 'react-native-chart-kit';
 import type { LineChartData } from 'react-native-chart-kit/dist/line-chart/LineChart';
 
-import ErrorMessage from '@market-pulse-app/components/ErrorMessage';
-import Loader from '@market-pulse-app/components/Loader';
-import IntervalSelector from '@market-pulse-app/components/TimeSeriesChart/IntervalSelector';
+import ErrorMessage from '@market-pulse-app/components/ErrorMessage/ErrorMessage';
+import Loader from '@market-pulse-app/components/Loader/Loader';
+import IntervalSelector from '@market-pulse-app/components/TimeSeriesChart/IntervalSelector/IntervalSelector';
 import useTimeSeries from '@market-pulse-app/contexts/timeSeries.context';
 import formatLineChartData from '@market-pulse-app/utils/formatLineChartData';
+import colors from '@market-pulse-app/constants/colors';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -34,7 +35,7 @@ const TimeSeriesChart = () => {
                     chartConfig={{
                         backgroundGradientFromOpacity: 0,
                         backgroundGradientToOpacity: 0,
-                        color: () => '#767676',
+                        color: () => colors.gray,
                         strokeWidth: 2,
                     }}
                 />

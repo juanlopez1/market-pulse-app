@@ -3,17 +3,17 @@ import { createNativeStackNavigator, type NativeStackNavigationOptions } from '@
 import { BriefcaseBusiness } from '@tamagui/lucide-icons';
 
 import type { RootStackParamList } from '@market-pulse-app/navigators/root.types';
-import StockDetailScreen from '@market-pulse-app/screens/StockDetail.screen';
-import StocksTableScreen from '@market-pulse-app/screens/StocksTable.screen';
+import StockDetailScreen from '@market-pulse-app/screens/StockDetail/StockDetail.screen';
+import StocksTableScreen from '@market-pulse-app/screens/StocksTable/StocksTable.screen';
+import colors from '@market-pulse-app/constants/colors';
 
 const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 
-// TODO: move this
 const headerStyle = {
     headerStyle: {
-        backgroundColor: '#282828',
+        backgroundColor: colors.carbon,
     },
-    headerTintColor: '#d9d9d9',
+    headerTintColor: colors.white,
     headerTitleStyle: {
         fontWeight: 'bold',
     },
@@ -29,7 +29,7 @@ const RootNavigator = () => {
                     options={
                         {
                             title: 'Market Pulse',
-                            headerRight: () => <BriefcaseBusiness color="#d9d9d9" />,
+                            headerRight: () => <BriefcaseBusiness color="$white" />,
                             ...headerStyle,
                         } as NativeStackNavigationOptions
                     }

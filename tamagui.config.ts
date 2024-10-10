@@ -1,7 +1,17 @@
 import { config } from '@tamagui/config/v3';
-import { createTamagui } from 'tamagui';
+import { createTamagui, createTokens } from 'tamagui';
 
-export const tamaguiConfig = createTamagui(config);
+import colors from '@market-pulse-app/constants/colors';
+
+const tokens = createTokens({
+    ...config.tokens,
+    color: {
+        ...config.tokens.color,
+        ...colors,
+    },
+});
+
+const tamaguiConfig = createTamagui({ ...config, tokens });
 
 export default tamaguiConfig;
 

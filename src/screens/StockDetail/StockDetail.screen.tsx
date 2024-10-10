@@ -1,13 +1,12 @@
-import { YStack } from 'tamagui';
-
-import StockDetail from '@market-pulse-app/components/StockDetail';
+import StockDetail from '@market-pulse-app/components/StockDetail/StockDetail';
 import TimeSeriesChart from '@market-pulse-app/components/TimeSeriesChart';
+import { Container } from '@market-pulse-app/screens/StockDetail/StockDetail.style';
 
 const StockDetailScreen = () => (
-    <YStack flex={1} backgroundColor="#141414" padding={15} gap={25}>
+    <Container>
         <StockDetail />
         <TimeSeriesChart />
-    </YStack>
+    </Container>
 );
 
 export default StockDetailScreen;

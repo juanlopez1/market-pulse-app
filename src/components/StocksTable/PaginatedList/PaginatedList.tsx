@@ -1,10 +1,15 @@
 import { type FC, useEffect, useMemo, useState } from 'react';
-import { Button, Separator, Text, XStack } from 'tamagui';
+import { Text } from 'tamagui';
 import { ChevronLeft, ChevronRight } from '@tamagui/lucide-icons';
 import { FlashList } from '@shopify/flash-list';
 
-import TableItem from '@market-pulse-app/components/StocksTable/TableItem';
+import TableItem from '@market-pulse-app/components/StocksTable/TableItem/TableItem';
 import useStocks from '@market-pulse-app/contexts/stocks.context';
+import {
+    ListFooterButton,
+    ListFooterContainer,
+    ListSeparator,
+} from '@market-pulse-app/components/StocksTable/PaginatedList/PaginatedList.style';
 
 type PaginatedListProps = {
     itemsPerPage?: number;
@@ -42,36 +47,18 @@ const PaginatedList: FC<PaginatedListProps> = ({ itemsPerPage = 10 }) => {
             data={currentStocks}
             renderItem={({ item }) => <TableItem stock={item} />}
             keyExtractor={(item) => `${item.symbol}-${item.exchange}`}
-            ItemSeparatorComponent={() => <Separator marginVertical={10} borderColor="#2f2f2f" />}
+            ItemSeparatorComponent={() => <ListSeparator />}
             estimatedItemSize={100}
             ListFooterComponent={
-                <XStack
-                    alignItems="center"
-                    justifyContent="space-between"
-                    borderTopWidth={1}
-                    borderColor="#2f2f2f"
-                    paddingVertical={20}
-                >
-                    <Button
-                        variant="outlined"
-                        color="#d9d9d9"
-                        borderColor="#d9d9d9"
-                        onPress={handlePrevPage}
-                        disabled={currentPage === 1}
-                    >
-                        <ChevronLeft color="#d9d9d9" />
-                    </Button>
-                    <Text color="#747474">{`Pagina ${currentPage} de ${totalPages}`}</Text>
-                    <Button
-                        variant="outlined"
-                        color="#d9d9d9"
-                        borderColor="#d9d9d9"
-                        onPress={handleNextPage}
-                        disabled={currentPage === totalPages}
-                    >
-                        <ChevronRight color="#d9d9d9" />
-                    </Button>
-                </XStack>
+                <ListFooterContainer>
+                    <ListFooterButton onPress={handlePrevPage} disabled={currentPage === 1}>
+                        <ChevronLeft color="$white" />
+                    </ListFooterButton>
+                    <Text color="$gray">{`Pagina ${currentPage} de ${totalPages}`}</Text>
+                    <ListFooterButton onPress={handleNextPage} disabled={currentPage === totalPages}>
+                        <ChevronRight color="$white" />
+                    </ListFooterButton>
+                </ListFooterContainer>
             }
         />
     );

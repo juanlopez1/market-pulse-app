@@ -1,12 +1,19 @@
-import { FlatList, TouchableOpacity } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { useMemo, useState } from 'react';
-import { Input, Separator, Text, XStack, YStack } from 'tamagui';
+import { XStack, YStack } from 'tamagui';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 
 import type { RootStackParamList } from '@market-pulse-app/navigators/root.types';
 import type { Stock } from '@market-pulse-app/types/stock.types';
 import useStocks from '@market-pulse-app/contexts/stocks.context';
+import {
+    FilterInput,
+    ItemsList,
+    ItemName,
+    ListSeparator,
+    Title,
+} from '@market-pulse-app/components/StocksSearcher/StocksSearcher.style';
 
 type FilterType = 'symbol' | 'name';
 
@@ -45,12 +52,10 @@ const StocksSearcher = () => {
 
     return (
         <YStack marginBottom={10}>
-            <Text fontWeight="bold" color="#d9d9d9" fontSize={24} marginBottom={20} textAlign="center">
-                Acciones disponibles
-            </Text>
+            <Title>Acciones disponibles</Title>
             <XStack gap={10}>
                 <YStack flex={1}>
-                    <Input
+                    <FilterInput
                         id="symbol"
                         placeholder="Buscá por símbolo..."
                         onChangeText={(text) => setSymbol(text)}
@@ -58,13 +63,10 @@ const StocksSearcher = () => {
                         onFocus={handleFocus('symbol')}
                         onBlur={handleBlur}
                         editable={!fetching && !error}
-                        backgroundColor="#282828"
-                        borderColor="#747474"
-                        color="#df9a3f"
                     />
                 </YStack>
                 <YStack flex={1}>
-                    <Input
+                    <FilterInput
                         id="name"
                         placeholder="Buscá por nombre..."
                         onChangeText={(text) => setName(text)}
@@ -72,36 +74,19 @@ const StocksSearcher = () => {
                         onFocus={handleFocus('name')}
                         onBlur={handleBlur}
                         editable={!fetching && !error}
-                        backgroundColor="#282828"
-                        borderColor="#747474"
-                        color="#df9a3f"
                     />
                 </YStack>
             </XStack>
             {filteredItems?.length > 0 && (
-                <FlatList
+                <ItemsList
                     data={filteredItems}
                     keyExtractor={(item) => `${item.symbol}-${item.exchange}`}
                     renderItem={({ item }) => (
                         <TouchableOpacity onPress={handlePressStock(item)}>
-                            <Text color="#d9d9d9">{focusedFilter === 'name' ? item.name : item.symbol}</Text>
+                            <ItemName>{focusedFilter === 'name' ? item.name : item.symbol}</ItemName>
                         </TouchableOpacity>
                     )}
-                    style={{
-                        position: 'absolute',
-                        top: 103,
-                        left: 0,
-                        right: 0,
-                        backgroundColor: '#282828',
-                        borderWidth: 1,
-                        borderColor: '#d9d9d9',
-                        borderRadius: 8,
-                        padding: 15,
-                        zIndex: 1,
-                        maxHeight: 400,
-                    }}
-                    contentContainerStyle={{ paddingBottom: 30 }}
-                    ItemSeparatorComponent={() => <Separator marginVertical={10} borderColor="#2f2f2f" />}
+                    ItemSeparatorComponent={() => <ListSeparator />}
                 />
             )}
         </YStack>
