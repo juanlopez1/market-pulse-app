@@ -24,6 +24,9 @@ jobs:
       - name: Run Lint
         run: npm run lint
 
+      - name: Run tests
+        run: npm run test
+
   build:
     name: Install and build
     environment: production
